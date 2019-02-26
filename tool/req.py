@@ -1,4 +1,5 @@
 import requests
+import json
 
 
 def main():
@@ -12,5 +13,15 @@ def same():
     print(r.encoding)
 
 
+def callTuLing(info):
+	appkey = "e5ccc9c7c8834ec3b08940e290ff1559"
+	url = ("http://www.tuling123.com/openapi/api?key=%s&info=%s"%(appkey,info))
+	req = requests.get(url)
+	content = req.text
+	data = json.loads(content)
+	answer = data['text']
+	return answer
+
 if __name__ == '__main__':
-    main()
+	# main()
+	print(callTuLing("真的吗"))
